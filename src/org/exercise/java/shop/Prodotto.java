@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.util.Random;
 
 public class Prodotto {
-    private int codice;
+    protected int codice;
     public String nome;
     public String marca;
     public BigDecimal prezzo;
