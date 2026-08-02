@@ -19,9 +19,11 @@ public class Carrello {
 
     @Override 
     public String toString() {
+        String returningString = "";
         for (int i=0; i<acquisti.length; i++) {
-            System.out.println(acquisti[i].toString());
+            if (i>0) returningString += "\n";
+            returningString = returningString += acquisti[i].toString();
         }
-        return "ciao";
+        return returningString;
     }
 }
