@@ -1,11 +1,18 @@
 package org.exercise.java.shop;
 
+import java.math.BigDecimal;
+
 public class Smarthphone extends Prodotto {
     public String imei;
     public String memory;
 
     public Smarthphone(String nome, String marca, String imei, String memory) {
         super(nome, marca);
+        this.imei = imei;
+        this.memory = memory;
+    }
+        public Smarthphone(String nome, String marca, BigDecimal prezzo, int iva, String imei, String memory) {
+        super(nome, marca, prezzo, iva);
         this.imei = imei;
         this.memory = memory;
     }
