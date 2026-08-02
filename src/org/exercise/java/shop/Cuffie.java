@@ -34,6 +34,11 @@ public class Cuffie extends Prodotto {
     }
 
     @Override
+    public BigDecimal getPrezzoFidelity() {
+        if (isWireless) return super.getPrezzoFidelity();
+        else return prezzo.multiply(BigDecimal.valueOf( 0.93));
+    }
+    @Override
     public String toString() {
         return String.format("code: %s , %s %s , price: %s + iva %d, colore: %s , isWireless: %s", codice, nome, marca,
                 prezzo, iva, colore, isWireless);

@@ -4,14 +4,14 @@ import java.math.BigDecimal;
 
 public class Smarthphone extends Prodotto {
     public String imei;
-    public String memory;
+    public int memory;
 
-    public Smarthphone(String nome, String marca, String imei, String memory) {
+    public Smarthphone(String nome, String marca, String imei, int memory) {
         super(nome, marca);
         this.imei = imei;
         this.memory = memory;
     }
-        public Smarthphone(String nome, String marca, BigDecimal prezzo, int iva, String imei, String memory) {
+        public Smarthphone(String nome, String marca, BigDecimal prezzo, int iva, String imei, int memory) {
         super(nome, marca, prezzo, iva);
         this.imei = imei;
         this.memory = memory;
@@ -25,12 +25,19 @@ public class Smarthphone extends Prodotto {
         this.imei = imei;
     }
 
-    public String getMemory() {
+    public int getMemory() {
         return memory;
     }
 
-    public void setMemory(String memory) {
+    public void setMemory(int memory) {
         this.memory = memory;
+    }
+
+    
+    @Override
+    public BigDecimal getPrezzoFidelity() {
+        if (memory < 32) return super.getPrezzoFidelity();
+        else return prezzo.multiply(BigDecimal.valueOf( 0.95));
     }
 
     @Override

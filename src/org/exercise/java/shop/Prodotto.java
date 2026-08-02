@@ -59,7 +59,9 @@ public class Prodotto {
     public int getIva() {
         return iva;
     }
-
+    public BigDecimal getPrezzoFidelity() {
+        return prezzo.multiply(BigDecimal.valueOf( 0.98));
+    }
     @Override
     public String toString() {
         return String.format("code: %s , %s %s , price: %s + iva %d", codice, nome, marca, prezzo, iva);    

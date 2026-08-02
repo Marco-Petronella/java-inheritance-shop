@@ -12,12 +12,12 @@ public class Televisore extends Prodotto {
         this.isSmart = isSmart;
     }
 
-    
     public Televisore(String nome, String marca, BigDecimal prezzo, int iva, String dimensione, boolean isSmart) {
         super(nome, marca, prezzo, iva);
         this.dimensione = dimensione;
         this.isSmart = isSmart;
     }
+
     public String getDimensione() {
         return dimensione;
     }
@@ -32,6 +32,14 @@ public class Televisore extends Prodotto {
 
     public void setIsSmart(boolean isSmart) {
         this.isSmart = isSmart;
+    }
+
+    @Override
+    public BigDecimal getPrezzoFidelity() {
+        if (isSmart)
+            return super.getPrezzoFidelity();
+        else
+            return prezzo.multiply(BigDecimal.valueOf(0.90));
     }
 
     @Override
