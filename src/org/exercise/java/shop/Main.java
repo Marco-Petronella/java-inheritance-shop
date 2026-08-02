@@ -1,34 +1,39 @@
 package org.exercise.java.shop;
 
-import java.math.BigDecimal;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        // Prodotto testProdotto = new Prodotto("accessorio", "ferrari",
-        // BigDecimal.valueOf(100), 10);
-        // System.out.println(testProdotto);
-        // Smarthphone testSmarthphone = new Smarthphone("3310", "nokia",
-        // "454sdada5464", "1000000");
-        // System.out.println(testSmarthphone);
-        // Televisore testTelevisore = new Televisore("Frame TV", "Samsung",
-        // BigDecimal.valueOf(11000), 20, "60 pollici",
-        // true);
-        // System.out.println(testTelevisore);
-        // Cuffie testCuffie = new Cuffie("Kraken", "Razer", "Rainbow", false);
-        // System.out.println(testCuffie);
-        // Carrello testCarrello = new Carrello();
-        // testCarrello.addAcquisto(testTelevisore);
-        // testCarrello.addAcquisto(testCuffie);
-        // System.out.println(testCarrello);
 
 
         Carrello mioCarrello = new Carrello();
- 
+        String tesserato;
+        Scanner scan = new Scanner(System.in);
+        
+        mioCarrello.startShopping(scan);
 
-        mioCarrello.startShopping();
-
+        // controlliamo gli elementi nel carrello
         System.out.println(mioCarrello);
-        // scan.close();
+
+        // // test di stampa del prezzo con e senza la card per controllare il corretto funzionamento
+        // System.out.println("prezzo senza card:" + mioCarrello.getTotale());   
+        // mioCarrello.setIsTesserato(true);
+        // System.out.println("prezzo con card:" + mioCarrello.getTotale());
+
+        System.out.println("sei parte del programma fidelity card S/N: ");
+        tesserato = scan.nextLine();
+        if (tesserato.toUpperCase().equals("S")) {
+            mioCarrello.setIsTesserato(true);
+        }
+        else if (tesserato.toUpperCase().equals("N")) {
+            mioCarrello.setIsTesserato(false);
+        }
+        else {
+            System.out.println("Tessera non valida, si considererà come non tesserato!");
+            mioCarrello.setIsTesserato(false);
+        }
+        
+        System.out.println("il totale per la sua spesa è: " + mioCarrello.getTotale());
+        scan.close();
     }
 }

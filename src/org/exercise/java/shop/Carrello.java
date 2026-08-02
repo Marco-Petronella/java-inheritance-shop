@@ -5,13 +5,13 @@ import java.util.Scanner;
 
 public class Carrello {
     Prodotto[] acquisti = new Prodotto[0];
-    Boolean isTesserato;
+    Boolean isTesserato = false;
 
     public Prodotto[] getProdotto() {
         return acquisti;
     }
 
-    public void isTesserato(boolean tesserato) {
+    public void setIsTesserato(boolean tesserato) {
         isTesserato = tesserato;
     }
 
@@ -32,22 +32,19 @@ public class Carrello {
     public BigDecimal getTotale() {
         BigDecimal totale = new BigDecimal(0);
         for (int i = 0; i < acquisti.length; i++) {
-            if (isTesserato)
-                totale = totale.add(acquisti[i].getPrezzoFidelity());
-            totale = totale.add(acquisti[i].getPrezzo());
+            if (isTesserato) totale = totale.add(acquisti[i].getPrezzoFidelity());
+            else totale = totale.add(acquisti[i].getPrezzo());
         }
         return totale;
     }
 
-    public void startShopping() {
+    public void startShopping(Scanner scan) {
         String nome;
         String marca;
         BigDecimal prezzo;
         int iva;
         String readingLine;
         int readingInt;
-        // Carrello mioCarrello = new Carrello();
-        Scanner scan = new Scanner(System.in);
         boolean isShoppingDone = false;
 
         while (!isShoppingDone) {
@@ -120,8 +117,8 @@ public class Carrello {
                 System.out.println("Input non valido! Inserisci 'S' per aggiungere articoli o 'N' per terminare");
             }
         }
-        scan.close();
     }
+
 
     @Override
     public String toString() {
